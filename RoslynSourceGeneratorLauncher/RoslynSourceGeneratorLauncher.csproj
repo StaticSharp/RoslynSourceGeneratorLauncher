@@ -6,7 +6,7 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<PropertyGroup>
-		<PackageId>RoslynSourceGeneratorLauncher</PackageId>
+		<PackageId>StaticSharp.RoslynSourceGeneratorLauncher</PackageId>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
