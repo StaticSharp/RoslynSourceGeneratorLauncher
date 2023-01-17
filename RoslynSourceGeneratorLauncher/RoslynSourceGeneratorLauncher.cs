@@ -28,7 +28,7 @@ namespace RoslynSourceGeneratorLauncher
 
             foreach (var r in dataToSave)
             {
-                var outputPath = Path.Combine(outputDirectory, r.Key);
+                var outputPath = Path.GetFullPath(Path.Combine(outputDirectory, r.Key));
                 filesToDelete.Remove(outputPath);
                 File.WriteAllText(outputPath, r.Value);
             }
