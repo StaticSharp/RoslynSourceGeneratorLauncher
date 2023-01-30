@@ -18,26 +18,26 @@ jobs:
 
       - name: Version
         run: |
-          export package_version="0.1.$((${{github.run_number}}))"
+          export package_version="0.1.$((${{github.run_number}}-1))"
           echo "Package Version = $package_version"
           echo "package_version=$package_version" >> $GITHUB_ENV
 
       
-      # - name: Pack MixinSourceGenerator
-        # run: |
-          # dotnet pack ./RoslynSourceGeneratorLauncher/RoslynSourceGeneratorLauncher.csproj \
-          # -c Release \
-          # -p:PackageVersion=${{env.package_version}} \
-          # -o _out \
-          # -p:ContinuousIntegrationBuild=true \
-          # -p:PublishRepositoryUrl=true \
-          # -p:EmbedUntrackedSources=true \
-          # -p:DebugType=embedded
+      - name: pack mixinsourcegenerator
+        run: |
+          dotnet pack ./RoslynSourceGeneratorLauncher/RoslynSourceGeneratorLauncher.csproj \
+          -c release \
+          -p:packageversion=${{env.package_version}} \
+          -o _out \
+          -p:continuousintegrationbuild=true \
+          -p:publishrepositoryurl=true \
+          -p:embeduntrackedsources=true \
+          -p:debugtype=embedded
           
-      # - name: Publish MixinSourceGenerator
-        # run: |
-          # dotnet nuget push \
-          # ./_out/StaticSharp.RoslynSourceGeneratorLauncher.${{env.package_version}}.nupkg \
-          # -k ${{secrets.NUGET_KEY}} \
-          # -s https://api.nuget.org/v3/index.json
+      - name: publish mixinsourcegenerator
+        run: |
+          dotnet nuget push \
+          ./_out/StaticSharp.RoslynSourceGeneratorLauncher.${{env.package_version}}.nupkg \
+          -k ${{secrets.nuget_key}} \
+          -s https://api.nuget.org/v3/index.json
 
