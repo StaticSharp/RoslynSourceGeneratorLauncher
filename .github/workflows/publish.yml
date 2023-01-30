@@ -14,11 +14,12 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Setup .NET Core @ Latest
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3
+          dotnet-version: '7.0.x'
 
       - name: Version
         run: |
-          export package_version="0.1.$((${{github.run_number}}-1))"
+          export package_version="0.1.$((${{github.run_number}}-2))"
           echo "Package Version = $package_version"
           echo "package_version=$package_version" >> $GITHUB_ENV
 
